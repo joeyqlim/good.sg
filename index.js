@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const expressLayouts = require("express-ejs-layouts");
 const app = express();
 
-//const passport = require("./lib/passportConfig"); 
+const passport = require("./lib/passportConfig"); 
 const session = require("express-session");
 const flash = require("connect-flash");
 //const checkUser = require("./lib/blockCheck");
@@ -45,8 +45,8 @@ app.use(
 )
 
 // must come after sessions
-//app.use(passport.initialize());
-//app.use(passport.session());
+app.use(passport.initialize());
+app.use(passport.session());
 app.use(flash());
 
 // set global variable for ejs files
@@ -57,9 +57,10 @@ app.use(function(req, res, moveOn){
 })
 
 //all routes
- app.use("/", require("./routes/dashboard.route"));
+app.use("/", require("./routes/dashboard.route"));
+app.use("/auth", require("./routes/auth.route"));
+
 // app.use("/cuisine", require("./routes/cuisine.route"));
-// app.use("/auth", require("./routes/auth.route"));
 // app.use("/", checkUser, require("./routes/restaurant.route"));
 
 //connect to port
