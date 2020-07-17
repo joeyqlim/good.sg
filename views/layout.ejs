@@ -22,16 +22,32 @@
 
   <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
     <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+      <% if(currentUser) { %>
+        <li class="nav-item">
+          <a class="nav-link" href="/auth/signout">Sign out</a>
+        </li>
+      <% } else { %>
       <li class="nav-item">
-        <a class="nav-link" href="#">Sign in</a>
+        <a class="nav-link" href="/auth/signin">Sign in</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Sign out</a>
-      </li>
+      <% } %>
     </ul>
   </div>
 </nav>
 <body>
+  <% if(alerts.error) { %>
+    <% alerts.error.forEach(message => { %>
+      <div class="alert alert-danger mb-0">
+        <%= message %>
+      </div>
+  <% })} %>
+
+  <% if(alerts.success) { %>
+    <% alerts.success.forEach(message => { %>
+      <div class="alert alert-success mb-0">
+        <%= message %>
+      </div>
+  <% })} %>
     <%- body %>
 </body>
 </html>

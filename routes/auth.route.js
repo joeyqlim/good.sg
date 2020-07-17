@@ -34,11 +34,12 @@ router.post("/signup", async (req, res)=>{
 // Post sign in form
 router.post("/signin", 
   passport.authenticate('local', {
-    successRedirect: '/',
+    successRedirect: '/user',
     failureRedirect: '/auth/signin',
-    failureFlash: "Invalid Email/Password, please try again" })
+    failureFlash: "Invalid username or password, please try again." })
 );
 
+// Sign out
 router.get("/signout", (req, res) => {
   req.logout(); 
   req.flash("success", "Successfully signed out.");

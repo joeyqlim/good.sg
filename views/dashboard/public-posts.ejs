@@ -1,3 +1,16 @@
+
 <div class="container text-center">
-  <h2>view public posts</h2>
+  <div class="row mt-4">
+    <div class="col-md-10 mx-auto">
+      <h6>Some posts by our users</h6>
+      <% allPosts.forEach((post)=>{ %>
+        <div class="card">
+          <div class="card-body">
+            <p class="card-subtitle mb-2 text-muted small text-left"><%= post.postDate %></p>
+            <p class="text-left"><span class="font-weight-bold"><%= post.author.username %>: </span><span class="post-text"><%= post.text %></span></p>
+          </div>
+        </div>
+      <% }) %>
+    </div>
+  </div>
 </div>

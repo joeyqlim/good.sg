@@ -17,6 +17,10 @@ const userSchema = Schema({
       ref: "Post",
     },
   ],
+  isAdmin: {
+    type: Boolean,
+    default: false,
+  },
 });
 
 // creating a custom instance method that compares passwords

@@ -40,7 +40,7 @@ app.use(
     secret: process.env.SECRET,
     saveUninitialized: true,
     resave: false,
-    cookie: { maxAge : 360000 },
+    cookie: { maxAge : 360000000 },
   })
 )
 
@@ -59,8 +59,7 @@ app.use(function(req, res, moveOn){
 //all routes
 app.use("/", require("./routes/dashboard.route"));
 app.use("/auth", require("./routes/auth.route"));
-
-// app.use("/cuisine", require("./routes/cuisine.route"));
+app.use("/user", require("./routes/user.route"));
 // app.use("/", checkUser, require("./routes/restaurant.route"));
 
 //connect to port
