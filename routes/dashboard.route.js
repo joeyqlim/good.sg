@@ -2,7 +2,12 @@ const router = require("express").Router();
 const Post = require("../models/post.model");
 
 router.get("/", (req, res)=>{
-  res.render("dashboard/homepage");
+  if (req.user){
+    res.redirect("/user");
+  } else {
+    res.render("dashboard/homepage");
+
+  }
 });
 
 router.get("/public-posts", async (req, res)=>{

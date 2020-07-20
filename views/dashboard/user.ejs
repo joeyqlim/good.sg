@@ -1,11 +1,19 @@
 
 <div class="container text-center">
-  <h2>Hello, <%= username %>. Did you do good today?</h2>
+  <h2>Hello, <%= username %>. Ready to inspire?</h2>
   <div class="row mt-4">
-    <div class="col-md-7 mx-auto">
+    <div class="col-md-9 mx-auto">
       <form action="/user/createpost" method="POST">
         <div class="input-group mb-3">
-          <input name="text" type="text" class="form-control" maxlength="200" placeholder="max. 200 characters" aria-label="Recipient's username" aria-describedby="button-addon2">
+          <input name="text" type="text" class="form-control" maxlength="200" placeholder="max. 200 characters" aria-label="Post input box" aria-describedby="button-addon2">
+          <div class="input-group-prepend">
+            <select id="category-selector" class="btn btn-outline-secondary dropdown-toggle">
+              <option value="">Select Category</option>
+              <% categories.forEach((category)=>{ %>
+                <option value="%= category._id %>"><%= category.name %></option>
+                <% }) %>
+            </select>
+          </div>
           <div class="input-group-append">
             <button class="btn btn-outline-secondary" type="submit" id="button-addon2">&#128238;
             </button>
@@ -14,6 +22,8 @@
       </form>
     </div>
   </div>
+
+
   <div class="row mt-3">
     <div class="col-md-10 mx-auto">
       <h6>All Posts</h6>

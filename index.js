@@ -60,7 +60,7 @@ app.use(function(req, res, moveOn){
 app.use("/", require("./routes/dashboard.route"));
 app.use("/auth", require("./routes/auth.route"));
 app.use("/user", require("./routes/user.route"));
-// app.use("/", checkUser, require("./routes/restaurant.route"));
+app.use("/category", require("./routes/category.route"));
 
 //connect to port
 app.listen(process.env.PORT, () => {

@@ -1,0 +1,19 @@
+<div class="container text-center">
+  <div class="row mt-4">
+    <div class="col-md-4 mx-auto">
+      <h2>All categories</h2>
+      <ul class="list-group mb-4">
+        <% categories.forEach((category)=>{ %>
+          <li class="list-group-item"><%= category.name %></li>
+        <% }) %>
+      </ul>
+      <h2>Add new category</h2>
+      <form action="/category/new" method="POST">
+        <div class="input-group mb-3">
+          <input name="name" type="text" class="form-control" placeholder="new category" aria-label="new category"required>
+        </div>
+        <button type="submit" class="btn btn-success">Add category</button>
+      </form>
+    </div>
+  </div>
+</div>
