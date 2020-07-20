@@ -13,11 +13,11 @@ const postSchema = Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
     },
-    category: [
+    category:
       {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Category",
-      }],
+      },
   },
   { timestamps: true },
 );

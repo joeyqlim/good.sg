@@ -2,6 +2,7 @@ const router = require("express").Router();
 const moment = require("moment");
 const Post = require("../models/post.model");
 const Category = require("../models/category.model");
+const User = require("../models/user.model");
 
 // Get user homepage once signed in
 router.get("/", async (req, res)=>{
@@ -10,12 +11,30 @@ router.get("/", async (req, res)=>{
     let allPosts = await Post.find().populate("author");
     let categories = await Category.find();
 
-    res.render("dashboard/user", { posts, _id, username, allPosts, categories });
+    res.render("user/homepage", { posts, _id, username, allPosts, categories });
     //console.log(req.user)
   } catch (error) {
     console.log(error);
   }
 });
+
+router.get("/posts", async (req, res)=>{
+  try {
+    console.log(req.user._id);
+    let posts = await User.findById(req.user._id).populate({
+      path: "posts",
+      populate: { path: "category"},
+    });
+  
+    console.log(posts)
+
+    if (posts) {
+      res.render("user/posts", { posts });
+    }
+  } catch (error) {
+    console.log(error);
+  }
+})
 
 // Post user input, save to posts
 router.post("/createpost", async (req, res)=>{
@@ -31,10 +50,14 @@ router.post("/createpost", async (req, res)=>{
     let savedPost = await post.save();
 
     let updatedCategory = await Category.findByIdAndUpdate(postData.category, {
-      $push: { posts: savedPost._id },
+      $push: { posts: post._id },
     });
 
-    if (savedPost && updatedCategory) {
+    let updatedUser = await User.findByIdAndUpdate(postData.author, {
+      $push: { posts: post._id },
+    });
+
+    if (savedPost && updatedCategory && updatedUser) {
       res.redirect("/user");
     }
   } catch (error) {

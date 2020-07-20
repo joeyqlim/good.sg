@@ -11,12 +11,10 @@ const userSchema = Schema({
     type: String,
     required: true,
   },
-  posts: [
-    {
+  posts: [{
       type: mongoose.Schema.Types.ObjectId,
       ref: "Post",
-    },
-  ],
+    }],
   isAdmin: {
     type: Boolean,
     default: false,

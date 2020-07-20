@@ -6,7 +6,6 @@ router.get("/", (req, res)=>{
     res.redirect("/user");
   } else {
     res.render("dashboard/homepage");
-
   }
 });
 
