@@ -14,11 +14,7 @@ A microblog website where users can share their good deeds or behaviour (no matt
 
 <img src="https://i.imgur.com/PWscueJ.jpg" />
 
-
-
 ## Approach taken
-
-
 
 ## Installation instructions
 
