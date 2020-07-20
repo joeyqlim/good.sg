@@ -25,7 +25,10 @@
     <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
       <% if(currentUser) { %>
         <li class="nav-item">
-          <a class="nav-link" href="/category/new">New Category</a>
+          <a class="nav-link" href="/user/posts">My Posts</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/category/new">Categories</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/auth/signout">Sign out</a>
@@ -52,6 +55,7 @@
         <%= message %>
       </div>
   <% })} %>
+  
     <%- body %>
 
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

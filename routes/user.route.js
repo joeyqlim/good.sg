@@ -11,7 +11,7 @@ router.get("/", async (req, res)=>{
     let categories = await Category.find();
 
     res.render("dashboard/user", { posts, _id, username, allPosts, categories });
-    console.log(req.user)
+    //console.log(req.user)
   } catch (error) {
     console.log(error);
   }
@@ -19,16 +19,22 @@ router.get("/", async (req, res)=>{
 
 // Post user input, save to posts
 router.post("/createpost", async (req, res)=>{
-  console.log(req.body);
+  //console.log(req.body);
   try {
     let postData = {
       text: req.body.text,
+      category: req.body.category,
       postDate: moment(),
       author: req.user._id,
     };
     let post = new Post(postData);
     let savedPost = await post.save();
-    if (savedPost) {
+
+    let updatedCategory = await Category.findByIdAndUpdate(postData.category, {
+      $push: { posts: savedPost._id },
+    });
+
+    if (savedPost && updatedCategory) {
       res.redirect("/user");
     }
   } catch (error) {

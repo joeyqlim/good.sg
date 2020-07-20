@@ -7,10 +7,10 @@
         <div class="input-group mb-3">
           <input name="text" type="text" class="form-control" maxlength="200" placeholder="max. 200 characters" aria-label="Post input box" aria-describedby="button-addon2">
           <div class="input-group-prepend">
-            <select id="category-selector" class="btn btn-outline-secondary dropdown-toggle">
+            <select name="category" id="category-selector" class="btn btn-outline-secondary dropdown-toggle">
               <option value="">Select Category</option>
               <% categories.forEach((category)=>{ %>
-                <option value="%= category._id %>"><%= category.name %></option>
+                <option value="<%= category._id %>"><%= category.name %></option>
                 <% }) %>
             </select>
           </div>
@@ -27,7 +27,7 @@
   <div class="row mt-3">
     <div class="col-md-10 mx-auto">
       <h6>All Posts</h6>
-      <% allPosts.forEach((post)=>{ %>
+      <% allPosts.slice().reverse().forEach((post)=>{ %>
         <div class="card">
           <div class="card-body">
             <p class="card-subtitle mb-2 text-muted small text-left"><%= post.postDate %></p>

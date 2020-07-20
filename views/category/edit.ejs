@@ -1,0 +1,12 @@
+<div class="container text-center">
+<div class="col-md-4 mx-auto text center">
+  <h2>Edit category</h2>
+  <form action="/category/edit/<%= category._id %>" method="POST">
+    <div class="input-group mb-3">
+      <input name="name" type="text" class="form-control" value="<%= category.name %>" aria-label="new category"required>
+    </div>
+    <button type="submit" class="btn btn-success">Edit category</button>
+  </form>
+</div>
+</div>
+</div>

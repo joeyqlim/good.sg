@@ -1,12 +1,25 @@
-<div class="container text-center">
+<div class="container">
   <div class="row mt-4">
-    <div class="col-md-4 mx-auto">
+    <div class="col-md-6 mx-auto">
       <h2>All categories</h2>
       <ul class="list-group mb-4">
         <% categories.forEach((category)=>{ %>
-          <li class="list-group-item"><%= category.name %></li>
+          <li class="list-group-item"><%= category.name %><br>
+            <a class="btn btn-sm btn-outline-primary" href="/category/view/<%= category._id %>">view posts</a>
+            <a class="btn btn-sm btn-outline-secondary" href="/category/edit/<%= category._id %>">edit</a>
+            
+            <form
+              method="POST"
+              style="display: inline;"
+              action="/category/delete/<%= category._id %>?_method=DELETE">
+              <button class="btn btn-sm btn-outline-danger" type="submit">delete</button>
+            </form>
+
+          </li>
         <% }) %>
       </ul>
+    </div>
+    <div class="col-md-4 mx-auto text center">
       <h2>Add new category</h2>
       <form action="/category/new" method="POST">
         <div class="input-group mb-3">

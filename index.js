@@ -1,4 +1,5 @@
 const express = require("express");
+const methodOverride = require("method-override");
 const mongoose = require("mongoose");
 const expressLayouts = require("express-ejs-layouts");
 const app = express();
@@ -9,6 +10,8 @@ const flash = require("connect-flash");
 //const checkUser = require("./lib/blockCheck");
 
 require("dotenv").config();
+
+app.use(methodOverride("_method"));
 
 /* 
 ===================

@@ -3,7 +3,7 @@
   <div class="row mt-4">
     <div class="col-md-10 mx-auto">
       <h3>Some inspiration from our users</h3>
-      <% allPosts.forEach((post)=>{ %>
+      <% allPosts.slice().reverse().forEach((post)=>{ %>
         <div class="card">
           <div class="card-body">
             <p class="card-subtitle mb-2 text-muted small text-left"><%= post.postDate %></p>
