@@ -21,6 +21,7 @@ router.get("/", async (req, res)=>{
 router.get("/posts", async (req, res)=>{
   try {
     console.log(req.user._id);
+    userId = req.user._id;
     let posts = await User.findById(req.user._id).populate({
       path: "posts",
       populate: { path: "category"},
@@ -29,7 +30,7 @@ router.get("/posts", async (req, res)=>{
     console.log(posts)
 
     if (posts) {
-      res.render("user/posts", { posts });
+      res.render("user/posts", { posts, userId });
     }
   } catch (error) {
     console.log(error);
@@ -63,6 +64,17 @@ router.post("/createpost", async (req, res)=>{
   } catch (error) {
     console.log(error);
   }
+});
+
+// Delete post
+router.delete("/posts/delete/:postid", (req, res)=>{
+  Post.findByIdAndDelete(req.params.postid)
+  .then(()=>{
+    res.redirect("/user/posts")
+  })
+  .catch((err)=>{
+    console.log(err);
+  });
 });
 
 module.exports = router;
