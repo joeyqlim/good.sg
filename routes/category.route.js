@@ -1,6 +1,4 @@
 const Category = require("../models/category.model");
-const Post = require("../models/post.model");
-
 
 const router = require("express").Router();
 

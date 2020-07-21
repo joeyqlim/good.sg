@@ -1,13 +1,16 @@
 const express = require("express");
+const multer = require("multer");
+
 const methodOverride = require("method-override");
 const mongoose = require("mongoose");
 const expressLayouts = require("express-ejs-layouts");
+
 const app = express();
 
 const passport = require("./lib/passportConfig"); 
 const session = require("express-session");
 const flash = require("connect-flash");
-//const checkUser = require("./lib/blockCheck");
+const checkUser = require("./lib/checkUser");
 
 require("dotenv").config();
 
@@ -43,7 +46,7 @@ app.use(
     secret: process.env.SECRET,
     saveUninitialized: true,
     resave: false,
-    cookie: { maxAge : 360000000 },
+    cookie: { maxAge : 360000 },
   })
 )
 
@@ -62,8 +65,8 @@ app.use(function(req, res, moveOn){
 //all routes
 app.use("/", require("./routes/dashboard.route"));
 app.use("/auth", require("./routes/auth.route"));
-app.use("/user", require("./routes/user.route"));
-app.use("/category", require("./routes/category.route"));
+app.use("/user", checkUser, require("./routes/user.route"));
+app.use("/category", checkUser, require("./routes/category.route"));
 
 //connect to port
 app.listen(process.env.PORT, () => {

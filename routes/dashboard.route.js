@@ -11,7 +11,7 @@ router.get("/", (req, res)=>{
 
 router.get("/public-posts", async (req, res)=>{
   try {
-    let allPosts = await Post.find().populate("author");
+    let allPosts = await Post.find().populate("author").populate("category");
     res.render("dashboard/public-posts", { allPosts });
   } catch (error) {
     console.log(error)

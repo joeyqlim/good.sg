@@ -29,8 +29,16 @@
           <a class="nav-link" href="/user/posts">My Posts</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/category/new">Categories</a>
+          <a class="nav-link" href="/user/profile">My Profile</a>
         </li>
+          <% if(currentUser.isAdmin) { %>
+          <li>
+            <a class="nav-link" href="/category/new">Categories</a>
+          </li>
+          <li>
+            <a class="nav-link" href="/user/view">Categories</a>
+          </li>
+          <% } %>
         <li class="nav-item">
           <a class="nav-link" href="/auth/signout">Sign out</a>
         </li>

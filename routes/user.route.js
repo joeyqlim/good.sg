@@ -4,11 +4,47 @@ const Post = require("../models/post.model");
 const Category = require("../models/category.model");
 const User = require("../models/user.model");
 
+// MULTER =============== //
+const multer = require("multer");
+const path = require("path");
+const sharp = require("sharp");
+
+// set storage enginge
+const storage = multer.diskStorage({
+  destination: './public/uploads/',
+  filename: function(req, file, cb){
+    cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
+  }
+});
+
+// initialize upload
+const upload = multer({
+  storage: storage,
+  fileFilter: function(req, file, cb){
+    checkFileType(file, cb);
+  }
+}).single('avatar');
+
+// check file type
+function checkFileType(file, cb){
+  const filetypes = /jpeg|jpg|png|gif/;
+  const extName = filetypes.test(path.extname(file.originalname).toLowerCase());
+  const mimetype = filetypes.test(file.mimetype);
+
+  if(mimetype && extName){
+    return cb(null, true);
+  } else {
+    cb("File type not supported!");
+  };
+};
+
+// ROUTES =============== //
+
 // Get user homepage once signed in
 router.get("/", async (req, res)=>{
   try {
     let { posts, _id, username } = req.user;
-    let allPosts = await Post.find().populate("author");
+    let allPosts = await Post.find().populate("author").populate("category");
     let categories = await Category.find();
 
     res.render("user/homepage", { posts, _id, username, allPosts, categories });
@@ -18,10 +54,52 @@ router.get("/", async (req, res)=>{
   }
 });
 
+// Get user's profile
+router.get("/profile", async (req, res)=>{
+  try {
+    res.render("user/profile");
+  } catch (error) {
+    console.log(error);
+  };
+});
+
+// Upload avatar
+router.post("/profile/upload", (req, res)=>{
+  upload(req, res, (err)=>{
+    if(err){
+      res.render('user/profile', {
+        msg: err
+      });
+    } else {
+      if(req.file == undefined){
+        res.render('user/profile', {
+          msg: 'No file selected.'
+        });
+      }
+      console.log(req.file);
+      let uploaded = `${req.file.path}`
+      let destination = `${req.file.destination}/avatar.png`
+
+      sharp(uploaded)
+      .resize(200,200) 
+      .toFile(destination)
+      .then(()=>{
+        res.render('user/profile', {
+          msg: 'Image uploaded!',
+          file: `/uploads/avatar.png`
+        });
+      })
+      .catch((err)=>{
+        console.log(err);
+      })
+    }
+  })
+});
+
+// Get user's posts
 router.get("/posts", async (req, res)=>{
   try {
     console.log(req.user._id);
-    userId = req.user._id;
     let posts = await User.findById(req.user._id).populate({
       path: "posts",
       populate: { path: "category"},
@@ -30,7 +108,7 @@ router.get("/posts", async (req, res)=>{
     console.log(posts)
 
     if (posts) {
-      res.render("user/posts", { posts, userId });
+      res.render("user/posts", { posts });
     }
   } catch (error) {
     console.log(error);
