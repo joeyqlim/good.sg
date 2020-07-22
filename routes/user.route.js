@@ -66,6 +66,43 @@ router.get("/profile", async (req, res)=>{
   };
 });
 
+// View all user details (admin only)
+router.get("/view", async (req, res)=>{
+  console.log(req.user)
+  try {
+    let users = await User.find();
+
+    res.render("user/view", { users });
+  } catch (error) {
+    console.log(error);
+  };
+});
+
+// Make or remove admin status
+router.get("/profile/:userid/makeadmin", async (req, res)=>{
+  try {
+    let user = await User.updateOne(
+      { "_id" : req.params.userid },
+      { $set: { "isAdmin" : true } }
+    );
+    res.redirect("/user/view");
+  } catch (error) {
+    console.log(error);
+  };
+});
+
+router.get("/profile/:userid/removeadmin", async (req, res)=>{
+  try {
+    let user = await User.updateOne(
+      { "_id" : req.params.userid },
+      { $set: { "isAdmin" : false } }
+    );
+    res.redirect("user/view");
+  } catch (error) {
+    console.log(error);
+  };
+});
+
 // Upload avatar
 router.post("/profile/upload", (req, res)=>{
   upload(req, res, async (err)=>{
@@ -100,10 +137,11 @@ router.post("/profile/upload", (req, res)=>{
         .toFile(destination)
         .then(()=>{
           if (updatedUser){
-            res.render('user/profile', {
-              msg: 'Avatar changed!',
-              user
-            });
+            res.redirect('/user/profile')
+            // res.render('user/profile', {
+            //   msg: 'Avatar changed!',
+            //   user
+            // });
           } 
         })
         .catch((err)=>{
@@ -122,8 +160,7 @@ router.get("/posts", async (req, res)=>{
     console.log(req.user._id);
     let posts = await User.findById(req.user._id).populate({
       path: "posts",
-      populate: { path: "category"},
-      populate: { path: "author"},
+      populate: [{ path: "category"}, { path: "author"}],
     });
   
     console.log(posts)

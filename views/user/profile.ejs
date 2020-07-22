@@ -32,9 +32,6 @@
       <%= typeof msg != 'undefined' ? msg : '' %>
 
     <h5>Account type: <%= user.isAdmin ? "Admin" : "User" %></h5> 
-    <p><a href="/user/profile/<%= user._id %>/<%= user.isAdmin ? "removeadmin" : "makeadmin" %>">
-      <%= user.isAdmin ? "Remove Admin" : "Make Admin" %>
-    </a></p>
     </div>
   </div>
 </div>

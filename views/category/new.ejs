@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row mt-4">
-    <div class="col-md-6 mx-auto">
+    <div class="col-md-7 mx-auto">
       <h2>All categories</h2>
       <ul class="list-group mb-4">
         <% categories.forEach((category)=>{ %>
@@ -20,12 +20,12 @@
       </ul>
     </div>
     <div class="col-md-4 mx-auto text center">
-      <h2>Add new category</h2>
+      <h4>Add new category</h4>
       <form action="/category/new" method="POST">
         <div class="input-group mb-3">
           <input name="name" type="text" class="form-control" placeholder="new category" aria-label="new category"required>
         </div>
-        <button type="submit" class="btn btn-success">Add category</button>
+        <button type="submit" class="btn btn-sm btn-success">Add category</button>
       </form>
     </div>
   </div>
