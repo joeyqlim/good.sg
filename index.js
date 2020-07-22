@@ -1,6 +1,5 @@
 const express = require("express");
-const multer = require("multer");
-
+const cloudinary = require("cloudinary");
 const methodOverride = require("method-override");
 const mongoose = require("mongoose");
 const expressLayouts = require("express-ejs-layouts");
@@ -50,6 +49,13 @@ app.use(
     cookie: { maxAge : 360000 },
   })
 )
+
+// cloudinary config
+cloudinary.config({
+  cloud_name: process.env.CLOUD_NAME,
+  api_key: process.env.API_KEY,
+  api_secret: process.env.API_SECRET
+});
 
 // must come after sessions
 app.use(passport.initialize());

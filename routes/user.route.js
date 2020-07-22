@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const moment = require("moment");
+const cloudinary = require("cloudinary");
 const Post = require("../models/post.model");
 const Category = require("../models/category.model");
 const User = require("../models/user.model");
@@ -107,7 +108,6 @@ router.get("/profile/:userid/removeadmin", async (req, res)=>{
 router.post("/profile/upload", (req, res)=>{
   upload(req, res, async (err)=>{
     try {
-      let user = await User.findById(req.user._id);
       // if there is an error, render the error message
       if(err){
         res.render('user/profile', {
@@ -124,29 +124,18 @@ router.post("/profile/upload", (req, res)=>{
         console.log(req.file);
 
       // resize the uploaded image and save as new file
-        let uploaded = await `${req.file.path}`
-        let destination = await `./public/uploads/${req.user._id}_avatar.png`
+        let uploaded = await cloudinary.uploader.upload(req.file.path, function (result) {
+          cloudUrl = result.url;
+        })
+
+        //let destination = await `./public/uploads/${req.user._id}_avatar.png`
         let updatedUser = await User.updateOne(
           { "_id" : req.user._id },
-          { $set: { "avatar" : `/uploads/${req.user._id}_avatar.png` } }
+          { $set: { "avatar" : cloudUrl } }
         );
-  
-        sharp(uploaded)
-        .resize(200,200)
-        .toFormat('png')
-        .toFile(destination)
-        .then(()=>{
-          if (updatedUser){
-            res.redirect('/user/profile')
-            // res.render('user/profile', {
-            //   msg: 'Avatar changed!',
-            //   user
-            // });
-          } 
-        })
-        .catch((err)=>{
-          console.log(err);
-        })
+        if (updatedUser){ 
+          res.redirect('/user/profile')
+        } 
       }
     } catch (error) {
       console.log(error)
