@@ -125,7 +125,7 @@ router.post("/profile/upload", (req, res)=>{
 
       // resize the uploaded image and save as new file
         let uploaded = await cloudinary.uploader.upload(req.file.path, function (result) {
-          cloudUrl = result.url;
+          cloudUrl = result.secure_url;
         })
 
         //let destination = await `./public/uploads/${req.user._id}_avatar.png`
