@@ -2,28 +2,39 @@
   <div class="row mt-3">
     <div class="col-md-10 mx-auto">
       <h2><%= user.username %>'s profile</h2>
-      
-      <img src="/img/defaultuser.svg" alt="default" class="img-thumbnail img-fluid"/><br><br>
+
+        <img src="<%= user.avatar %>" alt="default" class="img-thumbnail img-fluid"/>
+        <button class="link-btn mx-auto" data-toggle="modal" data-target="#deleteModal">Upload new avatar</button>
+        <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Upload a new avatar</h5>
+              </div>
+              <div class="modal-body">
+                <form action="/user/profile/upload" enctype="multipart/form-data" method="POST"> 
+                  <div class="input-group">
+                    <div class="custom-file">
+                      <input type="file"class="custom-file-input" id="inputGroupFile04" name="avatar" accept="image/*"/>
+                      <label class="custom-file-label" for="inputGroupFile04"></label>
+                    </div>
+                    <div class="input-group-append">
+                      <button class="btn btn-outline-secondary" type="submit">Upload</button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
 
       <!-- Upload new profile picture -->
       <%= typeof msg != 'undefined' ? msg : '' %>
 
-    <form action="/user/profile/upload" enctype="multipart/form-data" method="POST"> 
-      <div class="input-group col-5 mx-auto">
-        <div class="custom-file">
-          <input type="file"class="custom-file-input" id="inputGroupFile04" name="avatar" accept="image/*"/>
-          <label class="custom-file-label" for="inputGroupFile04"></label>
-        </div>
-        <div class="input-group-append">
-          <button class="btn btn-outline-secondary" type="submit">Upload</button>
-        </div>
-      </div>
-    </form>
-
-
-
-      <!-- Display the uploaded resized picture for testing purposes -->
-      <img src="<%= user.avatar %>" alt="avatar">
+    <h5>Account type: <%= user.isAdmin ? "Admin" : "User" %></h5> 
+    <p><a href="/user/profile/<%= user._id %>/<%= user.isAdmin ? "removeadmin" : "makeadmin" %>">
+      <%= user.isAdmin ? "Remove Admin" : "Make Admin" %>
+    </a></p>
     </div>
   </div>
 </div>

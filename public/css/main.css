@@ -1,9 +1,27 @@
 .delete-btn {
+  all: unset;
   float: right;
+  color: rgb(221, 85, 85);
+}
+
+.delete-btn:hover {
+  color: rgb(134, 49, 49);
+}
+
+.link-btn {
+  all: unset;
+  display: block;
+  text-decoration: underline;
+  color: #468348;
+  font-size: 0.7rem;
 }
 
 .img-thumbnail {
   max-width: 100px;
+}
+
+.avatar-div {
+  margin-right: 20px;
 }
 
 .badge {

@@ -17,6 +17,7 @@ const userSchema = Schema({
     }],
   avatar: {
     type: String,
+    default: "/img/defaultuser.svg"
   },
   isAdmin: {
     type: Boolean,

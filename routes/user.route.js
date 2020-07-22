@@ -56,6 +56,7 @@ router.get("/", async (req, res)=>{
 
 // Get user's profile
 router.get("/profile", async (req, res)=>{
+  console.log(req.user)
   try {
     let user = await User.findById(req.user._id);
 
@@ -88,21 +89,22 @@ router.post("/profile/upload", (req, res)=>{
       // resize the uploaded image and save as new file
         let uploaded = await `${req.file.path}`
         let destination = await `./public/uploads/${req.user._id}_avatar.png`
-        let updatedUser = await User.findByIdAndUpdate(req.user._id, {
-          $push: { avatar: destination },
-        });
-        console.log(updatedUser)
+        let updatedUser = await User.updateOne(
+          { "_id" : req.user._id },
+          { $set: { "avatar" : `/uploads/${req.user._id}_avatar.png` } }
+        );
   
         sharp(uploaded)
         .resize(200,200)
         .toFormat('png')
         .toFile(destination)
         .then(()=>{
-          res.render('user/profile', {
-            msg: 'Image uploaded!',
-            file: `/uploads/${req.user._id}_avatar.png`,
-            user: updatedUser
-          });
+          if (updatedUser){
+            res.render('user/profile', {
+              msg: 'Avatar changed!',
+              user
+            });
+          } 
         })
         .catch((err)=>{
           console.log(err);
@@ -121,6 +123,7 @@ router.get("/posts", async (req, res)=>{
     let posts = await User.findById(req.user._id).populate({
       path: "posts",
       populate: { path: "category"},
+      populate: { path: "author"},
     });
   
     console.log(posts)
