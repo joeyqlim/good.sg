@@ -65,34 +65,44 @@ router.get("/profile", async (req, res)=>{
 
 // Upload avatar
 router.post("/profile/upload", (req, res)=>{
-  upload(req, res, (err)=>{
-    if(err){
-      res.render('user/profile', {
-        msg: err
-      });
-    } else {
-      if(req.file == undefined){
+  upload(req, res, async (err)=>{
+    try {
+      // if there is an error, render the error message
+      if(err){
         res.render('user/profile', {
-          msg: 'No file selected.'
+          msg: err
         });
-      }
-      console.log(req.file);
-      let uploaded = `${req.file.path}`
-      let destination = `${req.file.destination}/avatar.png`
+      } else {
+      // if no image is uploaded, render the error message
+        if(req.file == undefined){
+          res.render('user/profile', {
+            msg: 'No file selected.'
+          });
+        }
+      // if no errors, save the original image to uploads folder
+        console.log(req.file);
 
-      sharp(uploaded)
-      .resize(200,200) 
-      .toFile(destination)
-      .then(()=>{
-        res.render('user/profile', {
-          msg: 'Image uploaded!',
-          file: `/uploads/avatar.png`
-        });
-      })
-      .catch((err)=>{
-        console.log(err);
-      })
-    }
+      // resize the uploaded image and save as new file
+        let uploaded = await `${req.file.path}`
+        let destination = await `./public/uploads/${req.user._id}_avatar.png`
+  
+        sharp(uploaded)
+        .resize(200,200)
+        .toFormat('png')
+        .toFile(destination)
+        .then(()=>{
+          res.render('user/profile', {
+            msg: 'Image uploaded!',
+            file: `/uploads/${req.user._id}_avatar.png`
+          });
+        })
+        .catch((err)=>{
+          console.log(err);
+        })
+      }
+    } catch (error) {
+      console.log(error)
+    }   
   })
 });
 

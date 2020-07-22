@@ -20,18 +20,19 @@ app.use(methodOverride("_method"));
 ===================
 Connect to MongoDB 
 */
-mongoose.connect(
-  process.env.MONGODBURL,
-  {
+mongoose.Promise = Promise;
+mongoose
+  .connect(process.env.MONGODBLIVE, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true,
-    useFindAndModify: false,
-  },
-  () => {
-    console.log("MongoDB connected!");
-  }
-);
+  })
+  .then(() => {
+    console.log("mongodb is running!");
+  })
+  .catch((e) => {
+    console.log(e);
+  });
 
 // adding custom files like css, js, img - look for static files in public folder
 app.use(express.static("public"));
