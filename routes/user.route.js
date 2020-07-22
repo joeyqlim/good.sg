@@ -57,7 +57,10 @@ router.get("/", async (req, res)=>{
 // Get user's profile
 router.get("/profile", async (req, res)=>{
   try {
-    res.render("user/profile");
+    let user = await User.findById(req.user._id);
+    console.log(user)
+
+    res.render("user/profile", { user });
   } catch (error) {
     console.log(error);
   };
@@ -67,6 +70,7 @@ router.get("/profile", async (req, res)=>{
 router.post("/profile/upload", (req, res)=>{
   upload(req, res, async (err)=>{
     try {
+      let user = await User.findById(req.user._id);
       // if there is an error, render the error message
       if(err){
         res.render('user/profile', {
@@ -85,6 +89,9 @@ router.post("/profile/upload", (req, res)=>{
       // resize the uploaded image and save as new file
         let uploaded = await `${req.file.path}`
         let destination = await `./public/uploads/${req.user._id}_avatar.png`
+        let updatedUser = await User.findByIdAndUpdate(req.user._id, {
+          $push: { avatar: destination },
+        });
   
         sharp(uploaded)
         .resize(200,200)
@@ -93,7 +100,8 @@ router.post("/profile/upload", (req, res)=>{
         .then(()=>{
           res.render('user/profile', {
             msg: 'Image uploaded!',
-            file: `/uploads/${req.user._id}_avatar.png`
+            file: `/uploads/${req.user._id}_avatar.png`,
+            user: updatedUser
           });
         })
         .catch((err)=>{

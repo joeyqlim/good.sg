@@ -2,6 +2,10 @@
   float: right;
 }
 
+.img-thumbnail {
+  max-width: 100px;
+}
+
 .badge {
   float: left;
   background-color: #a9c06d;

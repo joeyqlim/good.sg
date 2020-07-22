@@ -15,6 +15,9 @@ const userSchema = Schema({
       type: mongoose.Schema.Types.ObjectId,
       ref: "Post",
     }],
+  avatar: {
+    type: String,
+  },
   isAdmin: {
     type: Boolean,
     default: false,
