@@ -1,3 +1,18 @@
+@media screen and (max-width: 768) {
+  
+}
+
+/* textarea{ 
+  border-radius: .25rem;
+  width: 500px; 
+  min-width:300px; 
+  max-width: 800px; 
+
+  height:70px; 
+  min-height:70px;  
+  max-height:70px;
+} */
+
 .delete-btn {
   all: unset;
   float: right;
@@ -35,7 +50,8 @@
   color: white;
 }
 
-#category-selector {
-  border-right: 5px solid transparent;
-  padding: 0 10px;
-};
+.action-div {
+  margin-top: -10px;
+  line-height: 10px;
+}
+

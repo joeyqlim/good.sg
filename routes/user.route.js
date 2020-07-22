@@ -8,7 +8,6 @@ const User = require("../models/user.model");
 // MULTER =============== //
 const multer = require("multer");
 const path = require("path");
-const sharp = require("sharp");
 
 // set storage enginge
 const storage = multer.diskStorage({
