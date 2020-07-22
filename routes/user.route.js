@@ -58,7 +58,6 @@ router.get("/", async (req, res)=>{
 router.get("/profile", async (req, res)=>{
   try {
     let user = await User.findById(req.user._id);
-    console.log(user)
 
     res.render("user/profile", { user });
   } catch (error) {
@@ -92,6 +91,7 @@ router.post("/profile/upload", (req, res)=>{
         let updatedUser = await User.findByIdAndUpdate(req.user._id, {
           $push: { avatar: destination },
         });
+        console.log(updatedUser)
   
         sharp(uploaded)
         .resize(200,200)
