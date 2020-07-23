@@ -3,7 +3,7 @@
     <div class="col-md-10 mx-auto">
       <h6>Your posts</h6>
       <% posts.posts.slice().reverse().forEach((post)=>{ %>
-        <div class="card">
+        <div class="card" id="load-posts">
           <div class="card-body d-flex">
             <div class="avatar-div">
               <img src="<%= post.author.avatar %>" alt="default" class="img-thumbnail img-fluid" id="post-avatar"/>

@@ -4,7 +4,7 @@
     <div class="col-md-10 mx-auto">
       <h3>Some inspiration from our users</h3>
       <% allPosts.slice().reverse().forEach((post)=>{ %>
-        <div class="card">
+        <div class="card mt-4" id="load-posts">
           <div class="card-body d-flex">
             <div class="avatar-div">
               <img src="<%= post.author.avatar %>" alt="default" class="img-thumbnail img-fluid" id="post-avatar"/>
@@ -12,7 +12,7 @@
             <div class="post-div">
               <p class="card-subtitle mb-2 text-muted small text-left">posted on <%= post.postDate.toLocaleDateString() %> at <%= post.postDate.toLocaleTimeString() %></p>
               <p class="text-left"><span class="font-weight-bold"><%= post.author.username %>: </span><span class="post-text"><%= post.text %></span></p>
-              <a href="/category/view/<%= post.category._id %>" class="badge badge-pill"><%= post.category.name %></a
+              <a href="/category/view/<%= post.category._id %>" class="badge badge-pill"><%= post.category.name %></a>
             </div>       
           </div>
         </div>
