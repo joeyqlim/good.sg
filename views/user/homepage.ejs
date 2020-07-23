@@ -2,21 +2,23 @@
 <div class="container text-center">
   <h2>Hello, <%= username %>. Ready to inspire?</h2>
   <div class="row mt-4">
-    <div class="col-md-9 mx-auto">
+    <div class="p-3 card input-card col-md-9 mx-auto">
       <form action="/user/createpost" method="POST">
         <div class="input-div mb-3">
           <textarea name="text" type="text" class="form-control" maxlength="200" placeholder="max. 200 characters" aria-label="Post input box" aria-describedby="button-addon2"></textarea>
         </div>
-        <div class="action-div">
-            <select name="category" id="category-selector" class="btn btn-outline-secondary form-control col-7">
-              <option value="">Select Category</option>
+        <div class="action-div d-flex justify-content-between text-right">
+            <select name="category" id="category-selector" class="btn select-custom col-5">
+              <option value="">pick category ▼</i>
+              </option>
               <% categories.forEach((category)=>{ %>
                 <option value="<%= category._id %>"><%= category.name %></option>
                 <% }) %>
             </select>
-            <button class="form-control col-2 btn btn-outline-secondary btn-md" type="submit"><i class="fa fa-paper-plane-o" aria-hidden="true"></i>
+              <button class=" col-2 btn post-btn-custom btn-outline-success" type="submit"><i class="fa fa-paper-plane-o" aria-hidden="true"></i>
 
-            </button>
+            </div>
+            
         </div>
       </div>
       </form>

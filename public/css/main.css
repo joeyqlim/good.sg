@@ -24,6 +24,43 @@
   animation: moveInBottom 1s ease-out; 
 }
 
+.input-card {
+  box-shadow: 1px 1px 1px 1px #acacacb0;
+}
+
+.select-custom {
+  font-size: .7rem;
+  color: #437c45;
+}
+
+.landing-btn-custom {
+  border-color: #7baa65f6;
+  background-color: #7baa65f6;
+  color: white;
+}
+
+.post-btn-custom {
+  font-weight: bold;
+  border-color: #437c45;
+  background-color: green;
+  color: white;
+}
+
+.post-btn-custom:hover {
+  border-color: #7baa65f6;
+  background-color: #7baa65f6;
+  color: white;
+}
+
+.select-custom:hover {
+  color: #7baa65f6;
+}
+
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
 ul {
   list-style: none;
   font-size: 1rem !important;
@@ -44,14 +81,47 @@ transform: translate(0, 0);
 
 footer {
   padding: 0 0 !important;
+  margin-top: 15px;  
+}
+
+.footer-text {
+  font-weight: bold;
+  opacity: .8;
+  font-size: 0.6rem;
+  line-height: 0.5rem;
 }
 
 .landing-section {
   min-height: 100vh;
 }
 
-.auth-page {
+.full-page {
   min-height: 79vh;
+}
+
+.navbar-custom::after {
+  content: " ";
+  white-space: pre;
+}
+
+.navbar-custom::before {
+  content: " ";
+  white-space: pre;
+}
+
+.navbar-custom {
+  background-color: #a9c06db2;
+  line-height: 1rem;
+}
+
+.navbar-custom:hover {
+  background-color: #437c45;
+  color: white !important;
+  transition: .5s;
+}
+
+.nav-link:hover {
+  color: #437c45 !important;
 }
 
 .delete-btn {
