@@ -3,7 +3,7 @@
 ## Technologies Used
 - Front end: HTML, CSS, Bootstrap
 - Back end: Node.js, Express, MongoDB, Mongoose
-- Libraries: EJS, Multer, Cloudinary, bcrypt, Passport.js
+- Libraries: EJS, Multer, Cloudinary, bcrypt, Passport.js, moment.js
 
 ## Description
 A microblog website where users can share their good deeds or behaviour (no matter how small), in an effort to cultivate a kind, civilized and considerate society. Built in Singapore, for Singapore, categories focus on public transport, public health, environment, charity and road safety.
