@@ -1,5 +1,5 @@
 const Category = require("../models/category.model");
-
+const moment = require("moment");
 const router = require("express").Router();
 
 router.get("/new", (req, res)=>{
@@ -35,7 +35,7 @@ router.get("/view/:catid", async (req, res)=>{
       });
       
     if (categorized) {
-      res.render("category/view", { categorized });
+      res.render("category/view", { categorized, moment : moment });
     }
   } catch (error) {
     console.log(error);

@@ -30,30 +30,41 @@
 
 .select-custom {
   font-size: .7rem;
-  color: #437c45;
+  color: #05bb85;
 }
 
-.landing-btn-custom {
-  border-color: #7baa65f6;
-  background-color: #7baa65f6;
+.landing-btn-custom, .post-btn-custom {
+  border-color: #05bb85;
+  background-color: #05bb85;
+  color: white;
+}
+
+.landing-btn-custom:hover, .post-btn-custom:hover {
+  border-color: #00aa95;
+  background-color: #00aa95;
+}
+
+.outline-btn-custom {
+  border-color: #05bb85;
+}
+
+.outline-btn-custom:hover {
+  border-color: #00aa95;
+  background-color: #00aa95;
   color: white;
 }
 
 .post-btn-custom {
   font-weight: bold;
-  border-color: #437c45;
-  background-color: green;
   color: white;
 }
 
 .post-btn-custom:hover {
-  border-color: #7baa65f6;
-  background-color: #7baa65f6;
   color: white;
 }
 
 .select-custom:hover {
-  color: #7baa65f6;
+  color: #00aa95;
 }
 
 select {
@@ -110,18 +121,19 @@ footer {
 }
 
 .navbar-custom {
-  background-color: #a9c06db2;
-  line-height: 1rem;
+  background-color: #05bb85;
+  padding-bottom: 6px;
+  color: white;
 }
 
 .navbar-custom:hover {
-  background-color: #437c45;
+  background-color: #00aa95;
   color: white !important;
   transition: .5s;
 }
 
 .nav-link:hover {
-  color: #437c45 !important;
+  color: #00aa95 !important;
 }
 
 .delete-btn {
@@ -138,7 +150,7 @@ footer {
   all: unset;
   display: block;
   text-decoration: underline;
-  color: #468348;
+  color: #69b96c;
   font-size: 0.7rem;
 }
 
@@ -152,12 +164,12 @@ footer {
 
 .badge {
   float: left;
-  background-color: #a9c06d;
+  background-color: #05bb85;
   color: white;
 }
 
 .badge:hover {
-  background-color: #468348;
+  background-color: #7cd48c;
   color: white;
 }
 

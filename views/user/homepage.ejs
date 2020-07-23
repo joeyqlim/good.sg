@@ -16,15 +16,12 @@
                 <% }) %>
             </select>
               <button class=" col-2 btn post-btn-custom btn-outline-success" type="submit"><i class="fa fa-paper-plane-o" aria-hidden="true"></i>
-
             </div>
-            
         </div>
       </div>
       </form>
     </div>
   </div>
-
 
   <div class="row mt-3">
     <div class="col-md-10 mx-auto text-center">
@@ -36,7 +33,7 @@
               <img src="<%= post.author.avatar %>" alt="default" class="img-thumbnail img-fluid" id="post-avatar"/>
             </div>
             <div class="post-div">
-              <p class="card-subtitle mb-2 text-muted small text-left">posted on <%= post.postDate.toLocaleDateString() %> at <%= post.postDate.toLocaleTimeString() %></p>
+              <p class="card-subtitle mb-2 text-muted small text-left"><%= moment(post.postDate).format("[posted on] dddd D MMMM YYYY [at] h:mm a") %></p>
               <p class="text-left"><span class="font-weight-bold"><%= post.author.username %>: </span><span class="post-text"><%= post.text %></span></p>
               <a href="/category/view/<%= post.category._id %>" class="badge badge-pill"><%= post.category.name %></a>
             </div>       

@@ -19,9 +19,8 @@ Users must be signed in to make posts, and can upload their own avatar image. Th
 * As a resident of Singapore, I want to be aware and spread awareness of good social etiquette in Singapore
 
 ## Screenshots
-
-<img src="https://media2.giphy.com/media/JsQUaCRQC1W4WqNASV/giphy.gif" />
-<img src="https://i.imgur.com/eZHqp9x.png" />
+<img src="https://i.imgur.com/wYPwZFz.png" />
+<img src="https://i.imgur.com/crIxxKd.png" />
 
 ### Wireframes
 
@@ -40,8 +39,4 @@ Users must be signed in to make posts, and can upload their own avatar image. Th
 - Illustrations from <a href="https://undraw.co/illustrations">Undraw</a>
 - Default user icon and logo made by <a href="https://www.flaticon.com/authors/freepik">Freepik</a>
 - Favicon generated using <a href="https://favicon.io/">Favicon.io</a>
-
-
-
-
 

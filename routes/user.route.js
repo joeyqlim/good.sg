@@ -47,7 +47,7 @@ router.get("/", async (req, res)=>{
     let allPosts = await Post.find().populate("author").populate("category");
     let categories = await Category.find();
 
-    res.render("user/homepage", { posts, _id, username, allPosts, categories });
+    res.render("user/homepage", { posts, _id, username, allPosts, categories, moment : moment });
     //console.log(req.user)
   } catch (error) {
     console.log(error);
