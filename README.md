@@ -1,9 +1,9 @@
 # good.sg
 
 ## Technologies Used
-- Front end: HTML, CSS, Bootstrap
+- Front end: HTML, CSS, JavaScript
 - Back end: Node.js, Express, MongoDB, Mongoose
-- Libraries: EJS, Multer, Cloudinary, bcrypt, Passport.js, moment.js
+- Libraries and Tools: Bootstrap, EJS, Multer, Cloudinary, bcrypt, Passport.js, moment.js
 
 ## Description
 A microblog website where users can share their good deeds or behaviour (no matter how small), in an effort to cultivate a kind, civilized and considerate society. Built in Singapore, for Singapore, categories focus on public transport, public health, environment, charity and road safety.
@@ -15,8 +15,11 @@ Users must be signed in to make posts, and can upload their own avatar image. Th
 * "This morning, I stepped out of the MRT to let other passengers alight."
 
 ### User Stories
-* As a resident of Singapore, I want to encourage and be encouraged by other residents who do good things for society
-* As a resident of Singapore, I want to be aware and spread awareness of good social etiquette in Singapore
+* As a user, I want to encourage and be encouraged by other residents who do good things for society in Singapore through making posts and viewing others' posts
+* As a user, I want to be aware and spread awareness of good social etiquette in Singapore through making posts and viewing others' posts
+* As an administrator, I want to be able to view and edit the admin status of other users
+* As an administrator, I want to be able to edit, add and delete post categories
+* As an administrator, I want to be able to view a list of all registered
 
 ## Screenshots
 <img src="https://i.imgur.com/wYPwZFz.png" />
