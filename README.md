@@ -19,11 +19,12 @@ Users must be signed in to make posts, and can upload their own avatar image. Th
 * As a user, I want to be aware and spread awareness of good social etiquette in Singapore through making posts and viewing others' posts
 * As an administrator, I want to be able to view and edit the admin status of other users
 * As an administrator, I want to be able to edit, add and delete post categories
-* As an administrator, I want to be able to view a list of all registered users.
+* As an administrator, I want to be able to view a list of all registered users
+* As an administrator, I want to be able to delete offensive or irrelevant posts from any user
 
 ## Screenshots
-<img src="https://i.imgur.com/wYPwZFz.png" />
-<img src="https://i.imgur.com/crIxxKd.png" />
+<img src="https://i.imgur.com/PPGE6gV.png" />
+<img src="https://i.imgur.com/jKB8jV8.png" />
 
 ### Wireframes
 
