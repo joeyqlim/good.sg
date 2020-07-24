@@ -6,7 +6,7 @@
 - Libraries and Tools: Bootstrap, EJS, Multer, Cloudinary, bcrypt, Passport.js, moment.js
 
 ## Description
-A microblog website where users can share their good deeds or behaviour (no matter how small), in an effort to cultivate a kind, civilized and considerate society. Built in Singapore, for Singapore, categories focus on public transport, public health, environment, charity and road safety.
+A microblog website where users can share their good deeds or behaviour (no matter how small), in an effort to cultivate a kind, civilized and considerate society. Built in Singapore, for Singapore, categories focus on public transport, public health, environment, charity, civic-mindedness and road safety.
 
 Users must be signed in to make posts, and can upload their own avatar image. There are two types of users - regular users and administrators. Administrators are able to create new categories, access a dashboard of all users and have the power to remove or add administrator status for all users.
 
@@ -19,7 +19,7 @@ Users must be signed in to make posts, and can upload their own avatar image. Th
 * As a user, I want to be aware and spread awareness of good social etiquette in Singapore through making posts and viewing others' posts
 * As an administrator, I want to be able to view and edit the admin status of other users
 * As an administrator, I want to be able to edit, add and delete post categories
-* As an administrator, I want to be able to view a list of all registered
+* As an administrator, I want to be able to view a list of all registered users.
 
 ## Screenshots
 <img src="https://i.imgur.com/wYPwZFz.png" />
