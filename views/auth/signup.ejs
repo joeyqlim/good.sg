@@ -1,11 +1,11 @@
 <div class="container text-center full-page">
-  <h2>Sign up</h2>
+  <h2>Register</h2>
   <div class="row mt-4">
     <div class="col-md-4 mx-auto">
       <form action="/auth/signup" method="POST">
         <div class="input-group mb-3">
           <div class="input-group-prepend">
-            <span class="input-group-text" id="basic-addon1">&#129464;</span>
+            <span class="input-group-text" id="basic-addon1">&#128582;</span>
           </div>
           <input name="username" type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" required>
         </div>
@@ -15,7 +15,13 @@
           </div>
           <input name="password" type="password" minlength="6" class="form-control" placeholder="Password" aria-label="Password" aria-describedby="basic-addon1" required>
         </div>
-        <button type="submit" class="btn btn-success">Sign up</button>
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1">	&#9989;</span>
+          </div>
+          <input name="confirmPassword" type="password" minlength="6" class="form-control" placeholder="Confirm password" aria-label="Password" aria-describedby="basic-addon1" required>
+        </div>
+        <button type="submit" class="btn btn-success btn-custom">Sign up</button>
       </form>
     </div>
   </div>

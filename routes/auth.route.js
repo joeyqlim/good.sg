@@ -17,15 +17,22 @@ router.get("/signin", (req, res)=>{
 router.post("/signup", async (req, res)=>{
   console.log(req.body);
   try {
-    let { username, password } = req.body;
-    let hashedPassword = await bcrypt.hash(password, saltRounds);
-    let user = new User({ username, password: hashedPassword, });
+    let { username, password, confirmPassword } = req.body;
 
-    let savedUser = await user.save();
+    if (password === confirmPassword) {
+      let hashedPassword = await bcrypt.hash(password, saltRounds);
+      let user = new User({ username, password: hashedPassword, });
 
-    if (savedUser) {
-      res.redirect("/auth/signin");
+      let savedUser = await user.save();
+      if (savedUser) {
+        req.flash("success", "Your account has been created.");
+        res.redirect("/auth/signin");
+      }
+    } else {
+      req.flash("error", "Passwords do not match. Please try again.");
+      res.redirect("/auth/signup");
     }
+
   } catch (error) {
     console.log(error);
   }

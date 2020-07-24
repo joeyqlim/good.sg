@@ -33,13 +33,13 @@
   color: #05bb85;
 }
 
-.landing-btn-custom, .post-btn-custom {
+.landing-btn-custom, .post-btn-custom, .btn-custom {
   border-color: #05bb85;
   background-color: #05bb85;
   color: white;
 }
 
-.landing-btn-custom:hover, .post-btn-custom:hover {
+.landing-btn-custom:hover, .post-btn-custom:hover, .btn-custom:hover {
   border-color: #00aa95;
   background-color: #00aa95;
 }

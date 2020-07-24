@@ -194,7 +194,8 @@ router.post("/createpost", async (req, res)=>{
 router.delete("/posts/delete/:postid", (req, res)=>{
   Post.findByIdAndDelete(req.params.postid)
   .then(()=>{
-    res.redirect("/user/posts")
+    
+    res.redirect("/")
   })
   .catch((err)=>{
     console.log(err);

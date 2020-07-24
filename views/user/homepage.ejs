@@ -33,10 +33,38 @@
               <img src="<%= post.author.avatar %>" alt="default" class="img-thumbnail img-fluid" id="post-avatar"/>
             </div>
             <div class="post-div">
-              <p class="card-subtitle mb-2 text-muted small text-left"><%= moment(post.postDate).format("[posted on] dddd D MMMM YYYY [at] h:mm a") %></p>
+              <p class="card-subtitle mb-2 text-muted small text-left">
+                posted on <%= post.postDate.toLocaleDateString() %> at <%= post.postDate.toLocaleTimeString() %>
+              </p>
               <p class="text-left"><span class="font-weight-bold"><%= post.author.username %>: </span><span class="post-text"><%= post.text %></span></p>
               <a href="/category/view/<%= post.category._id %>" class="badge badge-pill"><%= post.category.name %></a>
-            </div>       
+            </div>
+            <% if (currentUser.isAdmin) { %>
+              <div class="del-btn-div ml-auto">
+                <button class="delete-btn" data-toggle="modal" data-target="#deleteModal"><span><i class="fa fa-trash-o" aria-hidden="true"></i></span>
+                </button>
+              </div>
+            <%} %>
+            
+            <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Delete this post?</h5>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Cancel</button>
+                    <form
+                    method="POST"
+                    style="display: inline;"
+                    action="/user/posts/delete/<%= post._id %>?_method=DELETE">
+                    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                  </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
           </div>
         </div>
       <% }) %>
