@@ -19,7 +19,7 @@
   },
   "homepage": "https://github.com/joeyqlim/wedidgood.sg#readme",
   "dependencies": {
-    "bcrypt": "^5.0.0",
+    "bcrypt": "^5.1.0",
     "cloudinary": "^1.22.0",
     "connect-flash": "^0.1.1",
     "dotenv": "^8.2.0",
